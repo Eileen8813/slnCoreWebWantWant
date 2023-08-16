@@ -8,6 +8,7 @@ namespace prjCoreWantMember.Controllers
         public IActionResult Index()
         {
             return View();
+            //家個備註
         }
         public IActionResult MemberAccount(int? idforreal)
         {
