@@ -3,7 +3,7 @@ using prjCoreWebWantWant.Models;
 
 namespace prjCoreWantMember.ViewModels
 {
-    public class CExpertResumeShowViewModels
+    public class CExpertInfoViewModel
     {
 
         public ExpertResume expertResume { get; set; }

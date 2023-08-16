@@ -29,7 +29,7 @@ namespace prjCoreWebWantWant.Controllers
         // GET: ExpertResumes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            CExpertResumeShowViewModels cexpertresume = new CExpertResumeShowViewModels();
+            CExpertInfoViewModel cexpertresume = new CExpertInfoViewModel();
             if (cexpertresume == null)
             {
                 return NotFound();
