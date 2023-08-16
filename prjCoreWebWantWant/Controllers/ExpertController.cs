@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using prjCoreWantMember.ViewModels;
 using prjCoreWebWantWant.Models;
+using prjCoreWantMember.ViewModels;
 
 namespace prjCoreWantMember.Controllers
 {
@@ -9,24 +9,74 @@ namespace prjCoreWantMember.Controllers
         public IActionResult ExpertMainPage(CKeywordViewModel vm)
         {
             NewIspanProjectContext db = new NewIspanProjectContext();
-            
-            IEnumerable<TaskList> datas = null;
+
+            IEnumerable<CExpertInfoViewModel> datas = null;
             if (string.IsNullOrEmpty(vm.txtKeyword))
             {
-                datas = from t in db.TaskLists
-                        where t.PublishOrNot == "立刻上架"
-                        select t;
-
+                datas = from r in db.Resumes
+                        join m in db.MemberAccounts
+                        on r.AccountId equals m.AccountId
+                        join er in db.ExpertResumes
+                       on r.ResumeId equals er.ResumeId
+                        where r.IsExpertOrNot == true
+                        select new CExpertInfoViewModel { resume = r, memberAccount = m, expertResume = er };
             }
             else
             {
-                
-                datas = db.TaskLists.Where(t => t.TaskTitle.ToUpper().Contains(vm.txtKeyword.ToUpper()) && t.PublishOrNot == "立刻上架" ||
-                 t.TaskDetail.ToUpper().Contains(vm.txtKeyword.ToUpper()) && t.PublishOrNot == "立刻上架" ||
-                 t.Address.ToUpper().Contains(vm.txtKeyword.ToUpper()) && t.PublishOrNot == "立刻上架"
-                );
+                datas = from r in db.Resumes
+                        join m in db.MemberAccounts
+                       on r.AccountId equals m.AccountId
+                        join er in db.ExpertResumes
+                        on r.ResumeId equals er.ResumeId
+                        where r.IsExpertOrNot == true && (m.Name.ToUpper().Contains(vm.txtKeyword.ToUpper()) ||
+                        r.Address.ToUpper().Contains(vm.txtKeyword.ToUpper()))
+                        select new CExpertInfoViewModel { resume = r, memberAccount = m, expertResume = er };
             }
             return View(datas);
+        }
+        public IActionResult ExpertMemberPage(int? idforreal)
+        {
+            NewIspanProjectContext db = new NewIspanProjectContext();
+
+            IEnumerable<CExpertInfoViewModel> datas = null;
+            idforreal = 33;
+
+            datas = from r in db.Resumes
+                    join m in db.MemberAccounts
+                    on r.AccountId equals m.AccountId
+                    join er in db.ExpertResumes
+                   on r.ResumeId equals er.ResumeId
+                    where r.IsExpertOrNot == true && r.AccountId == idforreal
+                    select new CExpertInfoViewModel { resume = r, memberAccount = m, expertResume = er };
+            return View(datas);
+        }
+
+        public IActionResult EditExpertResume(int? idforResume)
+        {
+            NewIspanProjectContext db = new NewIspanProjectContext();
+
+            IEnumerable<CExpertInfoViewModel> datas = null;
+            idforResume = 22;
+
+            datas = from r in db.Resumes
+                    join m in db.MemberAccounts
+                    on r.AccountId equals m.AccountId
+                    join er in db.ExpertResumes
+                   on r.ResumeId equals er.ResumeId
+                    where r.IsExpertOrNot == true && r.ResumeId == idforResume
+                    select new CExpertInfoViewModel { resume = r, memberAccount = m, expertResume = er };
+            return View(datas);
+        }
+        public IActionResult AddExpertResume(int? idforAccount)
+        {
+            NewIspanProjectContext db = new NewIspanProjectContext();
+            idforAccount = 33;
+            CExpertInfoViewModel data = null;
+            //data.resume.AccountId = (int)idforAccount;
+            data = (from m in db.MemberAccounts
+                    where m.AccountId == idforAccount
+                    select new CExpertInfoViewModel { memberAccount = m }).FirstOrDefault();
+            return View(data);
         }
     }
 
