@@ -370,3 +370,11 @@ text-align: center;
 .w-75 {
     width: 75%
 }
+
+.ExpertContainer {
+  
+    background-image: url("~/Expert/images/background1.jpg");
+    height:50vh;
+    width:50vw;
+}
+
