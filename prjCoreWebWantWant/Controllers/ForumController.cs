@@ -70,6 +70,8 @@ namespace WantTask.Controllers
             }
 
             ViewBag.CategoryId = categoryId;
+            ViewBag.CategoryTitle = _db.ForumCategories.FirstOrDefault(c => c.CategoryId == categoryId)?.Title;
+
             ForumPostListModel viewmodel = new ForumPostListModel();
             int pageSize = 10;
 

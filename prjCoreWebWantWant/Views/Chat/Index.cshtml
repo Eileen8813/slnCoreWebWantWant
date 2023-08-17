@@ -1,12 +1,12 @@
 ﻿
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Chat";
 }
 
 <h1>聊天室</h1>
 <div class="container">
 
-<div class="row" style="height:70vh">
+<div class="row my-5" style="height:70vh">
     <div class="col-md-3 list-group custom-list-group" id="userList" style="max-height: 100%; overflow-y: auto;">
     </div>
     <div class="col-md-9 card justify-content-end align-items-center">
@@ -104,22 +104,20 @@
                         messageTimeEle.classList.add('message-time','small');
 
                         if (chat.receiverId === currentLoginId) {
-                            chatMessage.classList.add('message-left', 'chat-bubble');//訊息樣式
-                            chatAvatar.classList.add( 'chat-avatar', 'img-thumbnail');
+                            chatMessage.classList.add('message-left', 'chat-bubble', 'go-left');//訊息樣式
+                            chatAvatar.classList.add('chat-avatar', 'img-thumbnail', 'go-left');
+                            messageTimeEle.classList.add('message-time', 'small', 'go-left');
                             chatContainer.appendChild(messageTimeEle);//加入對話時間
                             chatContainer.appendChild(chatAvatar);//加入頭像
                             chatContainer.appendChild(chatMessage);//加入對話
-
-
-
                         } else {
                             chatAvatar.src = @Html.Raw(Json.Serialize(ViewBag.currentLoginAvatarUrl));
-                            chatAvatar.classList.add('chat-avatar', 'img-thumbnail');
-                            chatMessage.classList.add('message-right', 'chat-bubble');
-                            chatContainer.appendChild(chatMessage);//加入對話
-                            chatContainer.appendChild(chatAvatar);//加入頭像
+                            chatAvatar.classList.add('chat-avatar', 'img-thumbnail', 'go-right');
+                            chatMessage.classList.add('message-right', 'chat-bubble', 'go-right');
+                            messageTimeEle.classList.add('message-time', 'small', 'go-right');
                             chatContainer.appendChild(messageTimeEle);//加入對話時間
-
+                            chatContainer.appendChild(chatAvatar);//加入頭像
+                            chatContainer.appendChild(chatMessage);//加入對話
                         }
                         chatDetailDiv.appendChild(chatContainer);
 
@@ -171,13 +169,21 @@
             min-width: 400px;
         }
 
-        .message-left {
-            position: relative;
-            background: #cdcdcd;
-            border-radius: .4em;
+        .go-left {
+            float: left;
         }
 
-        .message-left::after {
+        .go-right {
+            float: right;
+        }
+
+        .message-left {
+            background: #cdcdcd;
+            border-radius: .4em;
+            width: 200px;
+        }
+
+            .message-left::after {
                 content: '';
                 position: absolute;
                 left: 0;
@@ -190,29 +196,29 @@
                 border-bottom: 0;
                 margin-top: -5px;
                 margin-left: -10px;
-        }
+            }
 
         .message-right {
-            position: relative;
             background: #9ad2da;
             border-radius: .4em;
+            width: 200px;
         }
 
-        .message-right::after {
-            content: '';
-            position: absolute;
-            right: 0;
-            top: 50%;
-            width: 0;
-            height: 0;
-            float: right;
-            border: 10px solid transparent;
-            border-left-color: #9ad2da;
-            border-right: 0;
-            border-bottom: 0;
-            margin-top: -5px;
-            margin-right: -10px;
-        }
+            .message-right::after {
+                content: '';
+                position: absolute;
+                right: 0;
+                top: 50%;
+                width: 0;
+                height: 0;
+                float: right;
+                border: 10px solid transparent;
+                border-left-color: #9ad2da;
+                border-right: 0;
+                border-bottom: 0;
+                margin-top: -5px;
+                margin-right: -10px;
+            }
 
         .chat-avatar {
             width: 50px; /* 設定頭像寬度 */
@@ -229,14 +235,14 @@
 
         .chat-message {
             max-width: 400px;
-            min-width:250px;
+            min-width: 250px;
         }
 
-        #chatDetail{
+        #chatDetail {
             width: 100%;
             max-height: 300px;
             overflow-y: auto;
-            }
+        }
 
     </style>
 }

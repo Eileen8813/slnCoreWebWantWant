@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="~/Mstyles/style.css" asp-append-version="true" />
 @*    <link rel="stylesheet" href="~/Mstyles/Carousel.css" asp-append-version="true" />*@
     <link rel="stylesheet" href="~/Mstyles/Mstyle.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
     @await RenderSectionAsync("Styles", required: false)
 </head>
 
@@ -42,7 +44,7 @@
                             <a class="nav-link text-dark nav-a-link" asp-area="" asp-controller="Expert" asp-action="ExpertMainPage">找專家</a>>找專家</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark nav-a-link" asp-area="" asp-controller="Forum" asp-action="CategoryList">部落格</a>
+                            <a class="nav-link text-dark nav-a-link" asp-area="" asp-controller="Forum" asp-action="CategoryList">討論區</a>
                         </li>
                     </ul>
                         <ul class="navbar-nav ml-auto pe-5">

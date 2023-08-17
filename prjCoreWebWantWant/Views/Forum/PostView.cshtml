@@ -7,19 +7,21 @@
 }
 
 <div class="container col-9">
-<nav class="breadcrumb">
+    <nav class="breadcrumb  mt-4">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="/Forum">討論區</a></li>
+            <li class="breadcrumb-item"><a href="@Url.Content("~/Forum/CategoryList")">討論區</a></li>
         <li class="breadcrumb-item">@Html.ActionLink(@categoryTitle, "PostList", "Forum", new { categoryId = categoryId }, null)</li>
         <li class="breadcrumb-item active">@Model.MainPost.Title</ li >
 
     </ol>
-</nav>
+    </nav>
 
+<!--回覆文章按鈕-->
+    <a class="btn go-right" href="#goreply">回應此文章</a>
 
-@*#1的部分*@
-<div class="bg-primary bg-opacity-10 rounded-3">　
-    <div class="bg-body rounded-3 border mx-3 p-3">
+    <!--#1的部分-->
+    <div class="mybg-color rounded-3 end-float">　
+        <div class="bg-body rounded-3 border mx-3 p-3">
         <h4 class="border-bottom"><i class="bi bi-chat-right-heart-fill text-danger text-opacity-50"></i> @Model.MainPost.Title</h4>
         <div class="p-3">
             <div class="border-bottom row">
@@ -27,7 +29,7 @@
                 <span class="col-4 text-end">
                     <span class="small text-body-tertiary">@Model.MainPost.Created</span>
                     <span class="small small text-body-tertiary">觀看次數: @Html.DisplayFor(model => model.MainPost.ViewCount)</span>
-                    <span class="badge rounded-pill bg-primary bg-opacity-25 bi bi-star-fill text-danger text-opacity-75">Like</span>
+                        <span class="badge rounded-pill bg-danger bg-opacity-25 bi bi-heart-fill text-danger text-opacity-75"> like</span>
                 </span>
             </div>
             <div class="col-11 m-auto pt-3">
@@ -58,8 +60,21 @@
                             </div>
                         }
                     }
+                    <!--留言-->
+                    <button class="btn float-end btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#leaveAComment" aria-expanded="false" aria-controls="collapseExample">
+                        留言
+                    </button>
+                    <div class="end-float"></div>
+                    <div class="collapse" id="leaveAComment">
+                        <div class="card card-body">
+                            <textarea></textarea>
+                            <button class="btn btn-sm">確定發出</button>
+                        </div>
+                    </div>
+                    <!--留言end-->
                 </div>
             </div>
+
         </div>　
     </div>
 
@@ -72,8 +87,8 @@
             if (item.Status == 3)//處理已刪除回文的顯示
         {
             <br />
-            <div class="bg-primary bg-opacity-10 rounded-3">　
-                <div class="bg-body rounded-3 border mx-3 p-3">
+                <div class="mybg-color bg-opacity-10 rounded-3">　
+                    <div class="bg-body rounded-3 border mx-3 p-3">
                     <div class="px-3">
                         <div class="border-bottom row">
                             
@@ -97,15 +112,15 @@
         }
         else{//正常回文的顯示
         <br />
-        <div class="bg-primary bg-opacity-10 rounded-3">　
+        <div class="mybg-color bg-opacity-10 rounded-3">　　
             <div class="bg-body rounded-3 border mx-3 p-3">
                 <div class="p-3">
                     <div class="border-bottom row">
                                 <span class="col-8"><span class="badge bg-light badge-pill">@(floorCount)樓</span> @item.Account.UserName</span>
                         <span class="col-4 text-end">
                             <span class="small text-body-tertiary">@item.Created</span>
-                            <span class="badge rounded-pill bg-primary bg-opacity-25 bi bi-star-fill text-danger text-opacity-75">Like</span>
-                        </span>
+                                    <span class="badge rounded-pill bg-danger bg-opacity-25 bi bi-heart-fill text-danger text-opacity-75"> like</span>
+                                </span>
                     </div>
 
                     <div class="col-11 m-auto pt-3">
@@ -137,21 +152,89 @@
                                             <div class="small">B@(count2) @comment.Created</div>
                                         </div>
                                     }
+                                    <!--留言-->
+                                    <button class="btn float-end btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#leaveAComment@(floorCount)" aria-expanded="false" aria-controls="collapseExample">
+                                        留言
+                                    </button>
+                                    <div class="end-float"></div>
+                                    <div class="collapse" id="leaveAComment@(floorCount)">
+                                        <div class="card card-body">
+                                            <textarea></textarea>
+                                            <button class="btn btn-sm">確定發出</button>
+                                        </div>
+                                    </div>
+                                    <!--留言end-->
                                 }
                             </div>
                         </div>
+
             </div>　
         </div>
         }
+
     }
 }
 
-<p>
+
+    <div class="form-group my-5" id="goreply">
+        <h4 class="text-center text-body">Reply Here...</h4>
+        <hr>
+        <div class="col-md-10 m-auto">
+            <textarea id="tiny" name="Reply"></textarea> @* todo *@
+            <input type="submit" value="確定發出" class="btn btn-primary opacity-50 go-right mt-2" />
+        </div>
+    </div>
+
+
+
+    <p class="text-center my-5">
     @Html.ActionLink("回上一頁", "PostList", "Forum", new { categoryId = categoryId }, null)
 </p>
 </div>
-<script src="~/Scripts/tinymce/tinymce.min.js"></script>
 
+
+@section Styles{
+    <style>
+        a:link {
+            color: #46576b;
+        }
+
+        a:visited {
+            color: #434b53;
+        }
+
+        a:hover {
+            color: #5c6570;
+        }
+
+        a:active {
+            color: #445971;
+        }
+
+        .mybg-color{
+            background: #eaf0f6;
+        }
+
+        .go-right{
+            float:right;
+        }
+
+        .end-float{
+            clear: both;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+        }
+
+    </style>
+
+
+}
+
+<script src="~/lib/tinymce/tinymce.min.js"></script>
 <script>
     tinymce.init({
         selector: 'textarea#tiny',
@@ -165,3 +248,4 @@
             'bullist numlist checklist outdent indent | removeformat | code table help'
     })
 </script>
+}

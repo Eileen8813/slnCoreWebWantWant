@@ -5,26 +5,24 @@
 @model prjCoreWantMember.ViewModels.ForumPostListModel
 
 @{
-    ViewData["Title"] = "PostList";
+    ViewData["Title"] = "討論區";
     int categoryId = ViewBag.CategoryId;
 }
 
-<div class="container">
+<div class="container" style="">
 
-<h1>PostList</h1>
-
-<nav class="breadcrumb">
-    <ol class="breadcrumb">
+    <nav class="breadcrumb  mt-4">
+        <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="@Url.Content("~/Forum/CategoryList")">討論區</a></li>
-        <li class="breadcrumb-item active">@Model.PagedPosts.FirstOrDefault().ForumPostCategories.FirstOrDefault().Category.Title</ li >
+            <li class="breadcrumb-item active">@ViewBag.CategoryTitle</ li >
     </ol>
 </nav>
 
 <div class="d-inline-flex mb-3">
-    <span class="btn-group  me-3 btn btn-light btn-round">
-    <i class="bi bi-pen-fill"></i>
-    @Html.ActionLink("發表文章", "CreatePost", new { categoryId = categoryId })
-</span>
+        <span class="btn-group  me-3 btn btn-round">
+        <i class="bi bi-pen-fill pe-1"></i>
+        @Html.ActionLink("發表文章", "CreatePost", new { categoryId = categoryId })
+    </span>
 
 @using (Html.BeginForm())
 {
@@ -35,10 +33,10 @@
 }
 </div>
 
-<div class="row">
+<div class="row m-1">
     <table class="table text-start align-middle">
         <thead class="table-primary">
-        <tr>
+        <tr >
         <th class="col-4">
             文章標題
         </th>
@@ -60,7 +58,6 @@
         </th>
     </tr>
         </thead>
-
     @foreach (var item in Model.PagedPosts)
     {
         <tr>
@@ -92,7 +89,7 @@
 </table>
 </div>
 
-<div class="pagination justify-content-center"
+<div class="pagination justify-content-center my-5">
 
 
 @Html.PagedListPager(Model.PagedPosts, page => Url.Action("PostList", new { page, OrderBy=ViewBag.CurrentSort, q=ViewBag.CurrentQ,categoryId=categoryId}),new PagedListRenderOptions {
@@ -106,3 +103,24 @@
 </div>
 
 </div>
+
+@section Styles{
+    <style>
+        a:link {
+            color: #46576b;
+        }
+
+        a:visited {
+            color: #434b53;
+        }
+
+        a:hover {
+            color: #5c6570;
+        }
+
+        a:active {
+            color: #445971;
+        }
+    </style>
+
+}
