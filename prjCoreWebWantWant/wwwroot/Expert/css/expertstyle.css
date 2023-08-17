@@ -377,4 +377,14 @@ text-align: center;
     height:50vh;
     width:50vw;
 }
+.expertTbody {
+    overflow-y: auto;
+    height:55vh; 
+    width:80vw;
+}
+.expertThead {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+}
 
