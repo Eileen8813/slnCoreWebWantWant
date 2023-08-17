@@ -5,20 +5,31 @@
     Layout = "~/Views/Member/LayoutForMem.cshtml";
 }
 
-<h1>歷史評價</h1>
-
-<div class="row justify-content-end p-4">
-    <!--搜尋 -->
 
 
+<div class="justify-content-center p-4">
+    <h1>歷史評價</h1>
+   
+    <ul class="nav m-3 ">
+        <li class="nav-item">
+            <button class="nav-link active" onclick="clickdeploytwo(totask,tasked)">給別人的評價</button>
+        </li>
+        <li>|</li>
+        <li class="nav-item">
+            <button class="nav-link active" onclick="clickdeploytwo(tasked,totask)" aria-current="page" href="#">我收到的評價</button>
+        </li>
+       
+    </ul>
+    <hr class="p-3" />
 
 </div>
 
 <div class="container">
 
-    <form style="overflow-y: auto; height:65vh ">
+    <form style=" height:65vh ">
         <!-- 委託 -->
         <div>
+            <div id="totask" >
             <div class="row justify-content-around">
 
                 <h2 class="col-5 ">給出的評論</h2>
@@ -78,9 +89,10 @@
                 </div>
             </div>
             <!-- 被委託 -->
-            <div class="p-5">
+            
+
             </div>
-            <div>
+            <div id="tasked" class="displayno" >
                 <div class="row justify-content-around">
 
                     <h2 class="col-5 ">收到的評論</h2>
@@ -106,7 +118,8 @@
                                 <td class="w-20">評論日期</td>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody >
+                            <div style="overflow-y: auto; height:55vh; width:80vw; ">
                             @foreach (var item in Model)
                             {
                                 <tr>
@@ -122,7 +135,190 @@
                                     </td>
                                     <td class="w-20">2023/8/15</td>
                                 </tr>
+                                <tr>
+                                    <td class="w-15">
+                                        <!-- Html.DisplayFor(modelItem => item.TargetAccountId)-->莊大衛
+                                    </td>
+                                    <td class="w-15">
+                                        ☆☆☆☆☆
+                                    </td>
+                                    <td class="w-50">
+                                        @Html.DisplayFor(modelItem => item.RatingContent)
+                                        !這位裁縫師的專業技能和細心工作令我印象深刻。她能夠精準地根據我的需求製作服裝，修補也做得很好。唯一稍微可惜的是交付時間有時會稍微延遲。
+                                    </td>
+                                    <td class="w-20">2023/8/15</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-15">
+                                        <!-- Html.DisplayFor(modelItem => item.TargetAccountId)-->莊大衛
+                                    </td>
+                                    <td class="w-15">
+                                        ☆☆☆☆☆
+                                    </td>
+                                    <td class="w-50">
+                                        @Html.DisplayFor(modelItem => item.RatingContent)
+                                        !這位裁縫師的專業技能和細心工作令我印象深刻。她能夠精準地根據我的需求製作服裝，修補也做得很好。唯一稍微可惜的是交付時間有時會稍微延遲。
+                                    </td>
+                                    <td class="w-20">2023/8/15</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-15">
+                                        <!-- Html.DisplayFor(modelItem => item.TargetAccountId)-->莊大衛
+                                    </td>
+                                    <td class="w-15">
+                                        ☆☆☆☆☆
+                                    </td>
+                                    <td class="w-50">
+                                        @Html.DisplayFor(modelItem => item.RatingContent)
+                                        !這位裁縫師的專業技能和細心工作令我印象深刻。她能夠精準地根據我的需求製作服裝，修補也做得很好。唯一稍微可惜的是交付時間有時會稍微延遲。
+                                    </td>
+                                    <td class="w-20">2023/8/15</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-15">
+                                        <!-- Html.DisplayFor(modelItem => item.TargetAccountId)-->莊大衛
+                                    </td>
+                                    <td class="w-15">
+                                        ☆☆☆☆☆
+                                    </td>
+                                    <td class="w-50">
+                                        @Html.DisplayFor(modelItem => item.RatingContent)
+                                        !這位裁縫師的專業技能和細心工作令我印象深刻。她能夠精準地根據我的需求製作服裝，修補也做得很好。唯一稍微可惜的是交付時間有時會稍微延遲。
+                                    </td>
+                                    <td class="w-20">2023/8/15</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-15">
+                                        <!-- Html.DisplayFor(modelItem => item.TargetAccountId)-->莊大衛
+                                    </td>
+                                    <td class="w-15">
+                                        ☆☆☆☆☆
+                                    </td>
+                                    <td class="w-50">
+                                        @Html.DisplayFor(modelItem => item.RatingContent)
+                                        !這位裁縫師的專業技能和細心工作令我印象深刻。她能夠精準地根據我的需求製作服裝，修補也做得很好。唯一稍微可惜的是交付時間有時會稍微延遲。
+                                    </td>
+                                    <td class="w-20">2023/8/15</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-15">
+                                        <!-- Html.DisplayFor(modelItem => item.TargetAccountId)-->莊大衛
+                                    </td>
+                                    <td class="w-15">
+                                        ☆☆☆☆☆
+                                    </td>
+                                    <td class="w-50">
+                                        @Html.DisplayFor(modelItem => item.RatingContent)
+                                        !這位裁縫師的專業技能和細心工作令我印象深刻。她能夠精準地根據我的需求製作服裝，修補也做得很好。唯一稍微可惜的是交付時間有時會稍微延遲。
+                                    </td>
+                                    <td class="w-20">2023/8/15</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-15">
+                                        <!-- Html.DisplayFor(modelItem => item.TargetAccountId)-->莊大衛
+                                    </td>
+                                    <td class="w-15">
+                                        ☆☆☆☆☆
+                                    </td>
+                                    <td class="w-50">
+                                        @Html.DisplayFor(modelItem => item.RatingContent)
+                                        !這位裁縫師的專業技能和細心工作令我印象深刻。她能夠精準地根據我的需求製作服裝，修補也做得很好。唯一稍微可惜的是交付時間有時會稍微延遲。
+                                    </td>
+                                    <td class="w-20">2023/8/15</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-15">
+                                        <!-- Html.DisplayFor(modelItem => item.TargetAccountId)-->莊大衛
+                                    </td>
+                                    <td class="w-15">
+                                        ☆☆☆☆☆
+                                    </td>
+                                    <td class="w-50">
+                                        @Html.DisplayFor(modelItem => item.RatingContent)
+                                        !這位裁縫師的專業技能和細心工作令我印象深刻。她能夠精準地根據我的需求製作服裝，修補也做得很好。唯一稍微可惜的是交付時間有時會稍微延遲。
+                                    </td>
+                                    <td class="w-20">2023/8/15</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-15">
+                                        <!-- Html.DisplayFor(modelItem => item.TargetAccountId)-->莊大衛
+                                    </td>
+                                    <td class="w-15">
+                                        ☆☆☆☆☆
+                                    </td>
+                                    <td class="w-50">
+                                        @Html.DisplayFor(modelItem => item.RatingContent)
+                                        !這位裁縫師的專業技能和細心工作令我印象深刻。她能夠精準地根據我的需求製作服裝，修補也做得很好。唯一稍微可惜的是交付時間有時會稍微延遲。
+                                    </td>
+                                    <td class="w-20">2023/8/15</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-15">
+                                        <!-- Html.DisplayFor(modelItem => item.TargetAccountId)-->莊大衛
+                                    </td>
+                                    <td class="w-15">
+                                        ☆☆☆☆☆
+                                    </td>
+                                    <td class="w-50">
+                                        @Html.DisplayFor(modelItem => item.RatingContent)
+                                        !這位裁縫師的專業技能和細心工作令我印象深刻。她能夠精準地根據我的需求製作服裝，修補也做得很好。唯一稍微可惜的是交付時間有時會稍微延遲。
+                                    </td>
+                                    <td class="w-20">2023/8/15</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-15">
+                                        <!-- Html.DisplayFor(modelItem => item.TargetAccountId)-->莊大衛
+                                    </td>
+                                    <td class="w-15">
+                                        ☆☆☆☆☆
+                                    </td>
+                                    <td class="w-50">
+                                        @Html.DisplayFor(modelItem => item.RatingContent)
+                                        !這位裁縫師的專業技能和細心工作令我印象深刻。她能夠精準地根據我的需求製作服裝，修補也做得很好。唯一稍微可惜的是交付時間有時會稍微延遲。
+                                    </td>
+                                    <td class="w-20">2023/8/15</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-15">
+                                        <!-- Html.DisplayFor(modelItem => item.TargetAccountId)-->莊大衛
+                                    </td>
+                                    <td class="w-15">
+                                        ☆☆☆☆☆
+                                    </td>
+                                    <td class="w-50">
+                                        @Html.DisplayFor(modelItem => item.RatingContent)
+                                        !這位裁縫師的專業技能和細心工作令我印象深刻。她能夠精準地根據我的需求製作服裝，修補也做得很好。唯一稍微可惜的是交付時間有時會稍微延遲。
+                                    </td>
+                                    <td class="w-20">2023/8/15</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-15">
+                                        <!-- Html.DisplayFor(modelItem => item.TargetAccountId)-->莊大衛
+                                    </td>
+                                    <td class="w-15">
+                                        ☆☆☆☆☆
+                                    </td>
+                                    <td class="w-50">
+                                        @Html.DisplayFor(modelItem => item.RatingContent)
+                                        !這位裁縫師的專業技能和細心工作令我印象深刻。她能夠精準地根據我的需求製作服裝，修補也做得很好。唯一稍微可惜的是交付時間有時會稍微延遲。
+                                    </td>
+                                    <td class="w-20">2023/8/15</td>
+                                </tr>
+                                <tr>
+                                    <td class="w-15">
+                                        <!-- Html.DisplayFor(modelItem => item.TargetAccountId)-->莊大衛
+                                    </td>
+                                    <td class="w-15">
+                                        ☆☆☆☆☆
+                                    </td>
+                                    <td class="w-50">
+                                        @Html.DisplayFor(modelItem => item.RatingContent)
+                                        !這位裁縫師的專業技能和細心工作令我印象深刻。她能夠精準地根據我的需求製作服裝，修補也做得很好。唯一稍微可惜的是交付時間有時會稍微延遲。
+                                    </td>
+                                    <td class="w-20">2023/8/15</td>
+                                </tr>
                             }
+                </div>
                         </tbody>
                     </table>
                 </div>
