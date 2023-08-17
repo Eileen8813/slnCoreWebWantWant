@@ -65,7 +65,7 @@
                 <span class="h6 link-offset-1-hover">@Html.ActionLink(item.Title, "PostView", "Forum", new { postID = item.PostId }, null)</span><br />
                 <span class="text-secondary">@Html.DisplayFor(modelItem => item.Account.UserName)</span>
             </td>
-            <td class="text-center">
+                    <td class="text-center small">
                     @{
                         int postID = item.PostId;
                         int replyCount = Model.ReplyCounts.ContainsKey(postID) ? Model.ReplyCounts[postID] : 0;
@@ -73,13 +73,13 @@
                     }
                     @replyCount <i class="bi bi-reply-fill"></i> / @Html.DisplayFor(modelItem => item.ViewCount)  <i class="bi bi-eye-fill"></i>
             </td>
-            <td class="text-center">
+                    <td class="text-center small">
                 @Html.DisplayFor(modelItem => item.Created)
             </td>
-            <td class="text-center">
+                    <td class="text-center small">
                 @Html.DisplayFor(modelItem => item.Updated)
             </td>
-            <td class="text-center">
+            <td class="text-center small">
                     @Html.DisplayFor(modelItem => item.ForumPostComments.OrderByDescending(c => c.Created).FirstOrDefault().Created)
                     @Html.DisplayFor(modelItem => item.ForumPostComments.OrderByDescending(c => c.Created).FirstOrDefault().Account.UserName)
             </td>
