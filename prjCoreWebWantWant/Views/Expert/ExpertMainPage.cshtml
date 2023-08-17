@@ -3,9 +3,10 @@
 @model IEnumerable<CExpertInfoViewModel>
 @{
     ViewData["Title"] = "ExpertMainPage";
+    Layout = "~/Views/Shared/_Layout_Task.cshtml";
 }
 
-<h1>ExpertMainPage</h1>
+
 
 
 <main>
@@ -182,7 +183,8 @@
                                         </div>
                                     </div>
                                     <div class="items-link items-link2  f-right">
-                                        <a href="@Url.Action("Detail", new { id=item.resume.ResumeId}) target="_blank">詳細資訊</a>
+                                        @* <a href="@Url.Action("Detail", new { id=item.resume.ResumeId}) target="_blank">詳細資訊</a> *@
+                                        @Html.ActionLink("詳細資訊","Details","ExpertResumes",new { id=item.resume.ResumeId},null)
                                     </div>
                                 </div>
                             }
@@ -233,7 +235,7 @@
     <link rel="stylesheet" href="~/assetsForExpert/css/style.css">
     <link href="~/assetsForExpert/js/SweetAlert.js" />
 }
-@section Scripts{
+@* @section Scripts{
     <!-- All JS Custom Plugins Link Here here -->
     <script src="~/assetsForExpert/js/vendor/modernizr-3.5.0.min.js"></script>
     <!-- Jquery, Popper, Bootstrap -->
@@ -247,10 +249,10 @@
     <script src="~/assetsForExpert/js/owl.carousel.min.js"></script>
     <script src="~/assetsForExpert/js/slick.min.js"></script>
     <script src="~/assetsForExpert/js/price_rangs.js"></script>
-    @*<!-- One Page, Animated-HeadLin -->
+    <!-- One Page, Animated-HeadLin -->
     <script src="~/assetsForExpert/js/wow.min.js"></script>
     <script src="~/assetsForExpert/js/animated.headline.js"></script>
-    <script src="~/assetsForExpert/js/jquery.magnific-popup.js"></script>*@
+    <script src="~/assetsForExpert/js/jquery.magnific-popup.js"></script>
 
     <!-- Scrollup, nice-select, sticky -->
     <script src="~/assetsForExpert/js/jquery.scrollUp.min.js"></script>
@@ -270,4 +272,4 @@
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="~/assetsForExpert/js/SweetAlert.js"> </script>
-}
+} *@
