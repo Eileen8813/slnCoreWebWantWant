@@ -17,6 +17,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
     @await RenderSectionAsync("Styles", required: false)
+
+    <style>
+        .text-uppercase fw-bold {
+            color: #528EAF
+        }
+
+        .footer>li{
+            color: #528EAF
+        }
+    </style>
 </head>
 
 <body>
@@ -85,8 +95,9 @@
     </div>*@
     @RenderBody()
 
+    
     <!--== footer start ==-->
-    <footer id="footer" class="pt-5 bg-color text-white">
+    <footer id="footer" class="pt-5 bg-color text-white" style="background-color:#f0f0f0;"  >
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-sm-6 footer-list">
@@ -94,53 +105,53 @@
                     <a href="mailto:service@wantwant.com" class="a-email">service@wantwant.com</a>
                 </div>
                 <div class="col-md-3 col-sm-6 footer-list">
-                    <h5 class="text-uppercase fw-bold">Company</h5>
-                    <ul class="footer-menu py-3">
+                    <h5 class="text-uppercase fw-bold" style="color:#528EAF">Company</h5>
+                    <ul class="footer-menu py-3" style="color: #528EAF">
                         <li>
-                            @Html.ActionLink("Careers", "List", "Customer", new { area = "" }, new { @class = "footer-a-link" })
+                            @Html.ActionLink("Careers", "List", "Customer", new { area = "" }, new { @class = "footer-a-link" , @style = "color: #528EAF;" })
                         </li>
                         <li>
-                            @Html.ActionLink("About Us", "List", "Customer", new { area = "" }, new { @class = "footer-a-link" })
+                            @Html.ActionLink("About Us", "List", "Customer", new { area = "" }, new { @class = "footer-a-link", @style = "color: #528EAF;"  })
                         </li>
                         <li>
-                            @Html.ActionLink("Blog", "List", "Customer", new { area = "" }, new { @class = "footer-a-link" })
+                            @Html.ActionLink("Blog", "List", "Customer", new { area = "" }, new { @class = "footer-a-link", @style = "color: #528EAF;"  })
                         </li>
                         <li>
-                            @Html.ActionLink("Press", "List", "Customer", new { area = "" }, new { @class = "footer-a-link" })
+                            @Html.ActionLink("Press", "List", "Customer", new { area = "" }, new { @class = "footer-a-link", @style = "color: #528EAF;"  })
                         </li>
                         <li>
-                            @Html.ActionLink("Bonus", "List", "Customer", new { area = "" }, new { @class = "footer-a-link" })
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-3 col-sm-6 footer-list">
-                    <h5 class="text-uppercase fw-bold">Product</h5>
-                    <ul class="footer-menu py-3">
-                        <li>
-                            @Html.ActionLink("Enterprice", "List", "Customer", new { area = "" }, new { @class = "footer-a-link" })
-                        </li>
-                        <li>
-                            @Html.ActionLink("Pricing", "List", "Customer", new { area = "" }, new { @class = "footer-a-link" })
-                        </li>
-                        <li>
-                            @Html.ActionLink("Security", "List", "Customer", new { area = "" }, new { @class = "footer-a-link" })
+                            @Html.ActionLink("Bonus", "List", "Customer", new { area = "" }, new { @class = "footer-a-link" , @style = "color: #528EAF;" })
                         </li>
                     </ul>
                 </div>
                 <div class="col-md-3 col-sm-6 footer-list">
-                    <h5 class="text-uppercase fw-bold">Resource</h5>
+                    <h5 class="text-uppercase fw-bold" style="color:#528EAF">Product</h5>
                     <ul class="footer-menu py-3">
                         <li>
-                            @Html.ActionLink("Guilde", "List", "Customer", new { area = "" }, new { @class = "footer-a-link" })
+                            @Html.ActionLink("Enterprice", "List", "Customer", new { area = "" }, new { @class = "footer-a-link", @style = "color: #528EAF;"  })
                         </li>
                         <li>
-                            @Html.ActionLink("Help Center", "List", "Customer", new { area = "" }, new { @class = "footer-a-link" })
+                            @Html.ActionLink("Pricing", "List", "Customer", new { area = "" }, new { @class = "footer-a-link", @style = "color: #528EAF;"  })
                         </li>
                         <li>
-                            @Html.ActionLink("API", "List", "Customer", new { area = "" }, new { @class = "footer-a-link" })
+                            @Html.ActionLink("Security", "List", "Customer", new { area = "" }, new { @class = "footer-a-link", @style = "color: #528EAF;"  })
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-sm-6 footer-list">
+                    <h5 class="text-uppercase fw-bold" style="color:#528EAF">Resource</h5>
+                    <ul class="footer-menu py-3">
+                        <li>
+                            @Html.ActionLink("Guilde", "List", "Customer", new { area = "" }, new { @class = "footer-a-link" , @style = "color: #528EAF;" })
                         </li>
                         <li>
-                            @Html.ActionLink("Events", "List", "Customer", new { area = "" }, new { @class = "footer-a-link" })
+                            @Html.ActionLink("Help Center", "List", "Customer", new { area = "" }, new { @class = "footer-a-link" , @style = "color: #528EAF;" })
+                        </li>
+                        <li>
+                            @Html.ActionLink("API", "List", "Customer", new { area = "" }, new { @class = "footer-a-link" , @style = "color: #528EAF;" })
+                        </li>
+                        <li>
+                            @Html.ActionLink("Events", "List", "Customer", new { area = "" }, new { @class = "footer-a-link" , @style = "color: #528EAF;" })
                         </li>
                     </ul>
                 </div>
