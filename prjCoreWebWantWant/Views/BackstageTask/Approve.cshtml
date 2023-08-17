@@ -182,7 +182,7 @@
                                                 <th style="width: 50px;">語言</th>
                                                 <th style="width: 50px;">證照</th>
                                                 <th style="width: 50px;">技能</th>
-                                                <th style="width: 50px;">修改</th>
+                                                <th style="width: 50px;">查看</th>
                                                 <th style="width: 50px;">是否錄取</th>
 
                                                 </tr>
@@ -218,7 +218,7 @@
                                                             </div>
                                                         </td>
                                                         <td style="width: 100px">
-                                                            <a class="btn btn-outline-secondary btn-sm edit" title="Edit">
+                                                        <a class="btn btn-outline-secondary btn-sm edit" title="Edit" href="@Url.Content("~/backstage/ResumeUneditable")">
                                                                 <i class="fas fa-pencil-alt"></i>
                                                             </a>
                                                         </td>
@@ -227,8 +227,8 @@
                                                                 <div class="btn-group" role="group" aria-label="Basic example">
                                                                     @*<button type="button" class="btn btn-outline-secondary" id="yes">錄取</button>
                                                                     <button type="button" class="btn btn-outline-secondary" id="no">婉拒</button>*@
-                                                                @Html.ActionLink("錄取", "Accept","Backstage", new {id=item.CaseId}, new { @class = "btn btn-outline-secondary" ,style="color:#528EAF"})
-                                                                @Html.ActionLink("婉拒", "Refuse","Backstage", new {id=item.CaseId}, new { @class = "btn btn-outline-secondary" ,style="color:#528EAF"})
+                                                                @Html.ActionLink("錄取", "Accept","BackstageTask", new {id=item.CaseId}, new { @class = "btn btn-outline-secondary" ,style="color:#528EAF"})
+                                                                @Html.ActionLink("婉拒", "Refuse","BackstageTask", new {id=item.CaseId}, new { @class = "btn btn-outline-secondary" ,style="color:#528EAF"})
                                                                     </div>
                                                             </div>
                                                         </th>
@@ -255,7 +255,7 @@
                                                 <th style="width: 50px;">語言</th>
                                                 <th style="width: 50px;">證照</th>
                                                 <th style="width: 50px;">技能</th>
-                                                <th style="width: 50px;">修改</th>
+                                            <th style="width: 50px;">查看</th>
 
                                                 </tr>
                                             </thead>
@@ -326,7 +326,7 @@
                                                             </div>
                                                         </td>
                                                         <td style="width: 100px">
-                                                            <a class="btn btn-outline-secondary btn-sm edit" title="Edit">
+                                                        <a class="btn btn-outline-secondary btn-sm edit" title="Edit" href="@Url.Content("~/backstage/ResumeUneditable")">
                                                                 <i class="fas fa-pencil-alt"></i>
                                                             </a>
                                                         </td>
@@ -353,7 +353,7 @@
                                                 <th style="width: 50px;">語言</th>
                                                 <th style="width: 50px;">證照</th>
                                                 <th style="width: 50px;">技能</th>
-                                                <th style="width: 50px;">修改</th>
+                                                <th style="width: 50px;">查看</th>
 
                                                 </tr>
                                             </thead>
@@ -420,7 +420,7 @@
                                                             </div>
                                                     </td>
                                                     <td style="width: 100px">
-                                                        <a class="btn btn-outline-secondary btn-sm edit" title="Edit">
+                                                        <a class="btn btn-outline-secondary btn-sm edit" title="Edit" href="@Url.Content("~/backstage/ResumeUneditable")">
                                                             <i class="fas fa-pencil-alt"></i>
                                                         </a>
                                                     </td>
@@ -573,7 +573,8 @@
 
     <!-- lightbox init -->
     <script src="~/backstage1/static/js/lightbox.init.js"></script>
-            </body>
+   
+</body>
 
 </html>
    

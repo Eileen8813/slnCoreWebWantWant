@@ -34,7 +34,7 @@
     <link href="~/backstage1/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
-    @* <link href="~/backstage1/css/bootstrap.min.css" rel="stylesheet"> *@
+    <link href="~/backstage1/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
     <link href="~/backstage1/css/style.css" rel="stylesheet">
@@ -77,12 +77,9 @@
                             <h6 class="mb-4">任務內容</h6>
                             <form>
                                 <div class="form-floating mb-3">
-                                    <select class="form-select" id="floatingSelectTaskName"
-                                        aria-label="Floating label select example">
-                                        <!-- <option selected>請選擇縣市</option> -->
-                                        <option value="1">跑腿</option>
-                                        <option value="2">活動支援</option>
-                                        <option value="3">其他</option>
+                                    <select class="form-select" id="SelTaskName"
+                                            aria-label="Floating label select example">
+                                        <option>跑腿</option>
                                     </select>
                                     <label for="floatingSelectTown">請選擇任務類型</label>
                                 </div>
@@ -153,24 +150,20 @@
                                 </div>
                                 <p></p>
                                 </div>
-                                <div class="form-floating mb-3">
-                                    <select class="form-select" id="floatingSelectCity" >                                        
-                                        <!-- <option selected>請選擇縣市</option> -->
-                                        <option value="1">台北市</option>
-                                        <option value="2">新北市</option>
-                                        <option value="3">桃園市</option>
-                                    </select>
-                                    <label for="floatingSelectCity">請選擇縣市</label>
-                                </div>
-                                <div class="form-floating mb-3">
-                                    <select class="form-select" id="floatingSelectTown" >                                     
-                                        <!-- <option selected>請選擇縣市</option> -->
-                                        <option value="1">中山區</option>
-                                        <option value="2">大安區</option>
-                                        <option value="3">信義區</option>
-                                    </select>
-                                    <label for="floatingSelectTown">請選擇區域</label>
-                                </div>
+                            <div class="form-floating mb-3">
+                                <select class="form-select" id="selCity">
+                                    <!-- <option selected>請選擇縣市</option> -->
+                                    <option></option>
+                                </select>
+                                <label for="floatingSelectCity">請選擇縣市</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <select class="form-select" id="selTown">
+                                    <!-- <option selected>請選擇縣市</option> -->
+                                    <option></option>
+                                </select>
+                                <label for="floatingSelectTown">請選擇區域</label>
+                            </div>
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="floatingInputAddress"
                                     placeholder="name@example.com">
@@ -203,27 +196,21 @@
                                 <!-- </aside> -->
                               <!-- Range Slider End -->
                             <!-- </div> -->
-                                <div class="form-floating mb-3">
-                                    <select class="form-select" id="floatingSelectPayment"
+                            <div class="form-floating mb-3">
+                                <select class="form-select" id="SelPayment"
                                         aria-label="Floating label select example">
-                                        <!-- <option selected>請選擇縣市</option> -->
-                                        <option value="1">現金</option>
-                                        <option value="2">匯款</option>
-                                        <option value="3">三月</option>
-                                    </select>
-                                    <label for="floatingSelectPayment">支薪方式</label>
-                                </div>
-                                <div class="form-floating mb-3">
-                                    <select class="form-select" id="floatingSelectPaymentDate"
-                                        aria-label="Floating label select example">
-                                        <!-- <option selected>請選擇縣市</option> -->
-                                        <option value="1">當日現領</option>
-                                        <option value="2">二號</option>
-                                        <option value="3">三號</option>
-                                    </select>
-                                    <label for="floatingSelectPaymentDate">支薪日</label>
-                                </div>                                                         
+                                    <option></option>
+                                </select>
+                                <label for="floatingSelectPayment">支薪方式</label>
                             </div>
+                            <div class="form-floating mb-3">
+                                <select class="form-select" id="SelPaymentDate"
+                                        aria-label="Floating label select example">
+                                    <option></option>
+                                </select>
+                                <label for="floatingSelectPaymentDate">支薪日</label>
+                            </div>
+                        </div>
                     </div>
 
                     <!--專業需求-->
@@ -231,39 +218,29 @@
                         <div class="bg-light rounded h-100 p-4">
                             <h6 class="mb-4">專業需求(選填)</h6>
                             <div class="form-floating mb-3">
-                                <select class="form-select" id="floatingSelectCity">                                  
-                                    <option value="1">居家服務</option>
-                                    <option value="2">程式語言</option>
-                                    <option value="3">活動籌備</option>
+                                <select class="form-select" id="SelSkillBig">
+                                    <option></option>
                                 </select>
                                 <label for="floatingSelectCity">請選擇技能分類</label>
                             </div>
 
                             <div class="form-floating mb-3">
-                                <select class="form-select" id="floatingSelectCity">
-                                    <!-- <option selected>請選擇縣市</option> -->
-                                    <option value="1">JAVA</option>
-                                    <option value="2">Excel</option>
-                                    <option value="3">C#.NET</option>
+                                <select class="form-select" id="SelSkillSmall">
+                                    <option></option>
                                 </select>
                                 <label for="floatingSelectCity">請選擇技能</label>
                             </div>
 
                             <div class="form-floating mb-3">
-                                <select class="form-select" id="floatingSelectCity">
-                                    <option value="1">電腦</option>
-                                    <option value="2">設計</option>
-                                    <option value="3">學習</option>
+                                <select class="form-select" id="SelCerBig">
+                                    <option></option>
                                 </select>
                                 <label for="floatingSelectCity">請選擇證照分類</label>
                             </div>
 
                             <div class="form-floating mb-3">
-                                <select class="form-select" id="floatingSelectCity">
-                                    <!-- <option selected>請選擇縣市</option> -->
-                                    <option value="1">Adobe</option>
-                                    <option value="2">TOEIC</option>
-                                    <option value="3">領隊人員</option>
+                                <select class="form-select" id="SelCerSmall">
+                                    <option></option>
                                 </select>
                                 <label for="floatingSelectCity">請選擇證照</label>
                             </div>
@@ -332,72 +309,231 @@
 
     @section Scripts{
         <script>
-            //const btn = document.querySelector('#button1');
-            ////const theA = document.querySelector('#a1')
-            ////const theDiv2 = document.querySelector('#div2')
-            ////const userName = document.querySelector('#userName')
-            ////const theDiv = document.querySelector('#div1')
 
-            //btn.addEventListener('click', event => {              
+            //任務類型
+            const SelTaskName = document.querySelector('#SelTaskName');
 
-            //    const xhr = new XMLHttpRequest();
-            //    xhr.open('Post', '~/Backstage/Form');   //改成用ApiController裡面的Register方法，直接新增至DB
-            //    //xhr.open('POST', '@Url.Content("~/Backstage/Form")')
+            //select的任務名
+            async function loadSelTaskName() {
+                const response = await fetch('@Url.Content("~/BackstageTask/TaskName")')
+                const datas = await response.json()
+                const taskName = datas.map(TaskName => `<option value="${TaskName}">${TaskName}</option>`);
+                document.querySelector('#SelTaskName').innerHTML = taskName.join("");
 
-            //    xhr.addEventListener('load', () => {
-            //        const data = xhr.responseText;
-            //        theDiv.innerHTML = data;
-            //    })
+            }
 
-            //    //改用 fetch 傳送FormData到server端
-            //    const formData = new FormData(document.querySelector('#form'));
-            //    fetch('@Url.Content("~/Backstage/Form")', {
-            //        body: formData,
-            //        method: 'POST'
-            //    })
-            //        .then(response => {
-            //            if (response.ok) {
-            //                alert("新增成功")
-            //                location.href = '@Url.Content("~/Backstage/TablesEditable")'    //新增完後跳轉到TablesEditable畫面
-            //            } else {
-            //                alert("有錯誤!!")
-            //            }
-            //        })
-            //    })
+            loadSelTaskName();
 
+            //SelTaskName.addEventListener('change', () => {
+            //    loadDistrict();
+            //});
 
+            //支薪方式
+            const SelPayment = document.querySelector('#SelPayment');
 
-            //test
-            //步驟一，建立ajax物件
-            var xhr = new XMLHttpRequest();
+            //select的支薪方式
+            async function loadSelPayment() {
+                const response = await fetch('@Url.Content("~/BackstageTask/Payment")')
+                const datas = await response.json()
+                const payment = datas.map(Payment => `<option value="${Payment}">${Payment}</option>`);
+                document.querySelector('#SelPayment').innerHTML = payment.join("");
 
-            //步驟二，對伺服器發出要求
-            //api是controller，GetDemo是方法名
-            //網址要輸入Home/Ajax，因是在HomeController/View/Home下面Ajax.cshtml，因是在Ajax送出請求，要傳回自己的頁面
-            //xhr.open('GET', '/api/GetDemo')
+            }
 
-            // xhr.open('GET', '/api/getdemo?name=Mary&age=28')
+            loadSelPayment();
 
-            //改用Url.Content產生路徑↓
-            //若指定值↓
-            const name = "Jack";
-            const age = 25;
-            //xhr.open('GET', '@Url.Content("~/Backstage/Form")?name=Mary&age=28')
-            xhr.open('GET', `@Url.Content("~/Backstage/Form")?TaskTitle=${TaskTitle}&TaskDetail=${TaskDetail}`)
+            //SelPayment.addEventListener('change', () => {
+            //    loadDistrict();
+            //});
 
 
+            //支薪日
+            const SelPaymentDate = document.querySelector('#SelPaymentDate');
 
-            xhr.send();
+            //select的支薪日
+            async function loadSelPaymentDate() {
+                const response = await fetch('@Url.Content("~/BackstageTask/PaymentDate")')
+                const datas = await response.json()
+                const paymentDate = datas.map(PaymentDate => `<option value="${PaymentDate}">${PaymentDate}</option>`);
+                document.querySelector('#SelPaymentDate').innerHTML = paymentDate.join("");
 
-            //步驟三，接收伺服器回傳的結果(用load事件接收)
-            xhr.addEventListener('load', function () {
-                var data = xhr.responseText;
+            }
+            loadSelPaymentDate();
 
-                //步驟四，讀出回傳的結果
-                //步驟五，把讀出的結果顯示在網頁上
-                document.querySelector('#div1').innerHTML = `<h3>${data}</h3>`
+            //SelPaymentDate.addEventListener('change', () => {
+            //    loadDistrict();
+            //});
 
-            })
+
+
+
+            //城市和鄉鎮的標籤
+            const selCity = document.querySelector('#selCity');
+            const selTown = document.querySelector('#selTown');
+
+            //select的城市
+            async function loadCity() {
+                const response = await fetch('@Url.Content("~/BackstageTask/Cities")')
+                const datas = await response.json()
+                const cities = datas.map(City => `<option value="${City}">${City}</option>`);
+                document.querySelector('#selCity').innerHTML = cities.join("");
+
+                loadDistrict();
+            }
+
+            loadCity();
+
+            //select的區域
+            async function loadDistrict() {
+                const response = await fetch(`@Url.Content("~/BackstageTask/Districts")?City=${selCity.value}`);
+                const datas = await response.json()
+                const districts = datas.map(Town => `<option value='${Town}'>${Town}</option>`);
+                selTown.innerHTML = districts.join("");
+            }
+
+            loadDistrict();
+
+            selCity.addEventListener('change', () => {
+                loadDistrict();
+            });
+
+
+            //技能的標籤
+            const SelSkillBig = document.querySelector('#SelSkillBig');
+            const SelSkillSmall = document.querySelector('#SelSkillSmall');
+
+            //select的技能分類
+            async function loadSelSkillBig() {
+                const response = await fetch('@Url.Content("~/BackstageTask/SkillBig")')
+                const datas = await response.json()
+                const skillBig = datas.map(SkillTypeName => `<option value="${SkillTypeName}">${SkillTypeName}</option>`);
+                document.querySelector('#SelSkillBig').innerHTML = skillBig.join("");
+
+                loadSelSkillSmall();
+            }
+
+            loadSelSkillBig();
+
+            //select的技能小項
+            async function loadSelSkillSmall() {
+                const response = await fetch(`@Url.Content("~/BackstageTask/SkillSmall")?SkillBig=${SelSkillBig.value}`);
+                const datas = await response.json()
+                const skillSmall = datas.map(SkillName => `<option value='${SkillName}'>${SkillName}</option>`);
+                SelSkillSmall.innerHTML = skillSmall.join("");
+            }
+
+            loadSelSkillSmall();
+
+            SelSkillBig.addEventListener('change', () => {
+                loadSelSkillSmall();
+            });
+
+
+
+            //證照的標籤
+            const SelCerBig = document.querySelector('#SelCerBig');
+            const SelCerSmall = document.querySelector('#SelCerSmall');
+
+            //select的證照分類
+            async function loadSelCerBig() {
+                const response = await fetch('@Url.Content("~/BackstageTask/CerBig")')
+                const datas = await response.json()
+                const CerBig = datas.map(CertificateTypeName => `<option value="${CertificateTypeName}">${CertificateTypeName}</option>`);
+                document.querySelector('#SelCerBig').innerHTML = CerBig.join("");
+
+                loadSelCerSmall();
+            }
+
+            loadSelCerBig();
+
+            //select的證照小項
+            async function loadSelCerSmall() {
+                const response = await fetch(`@Url.Content("~/BackstageTask/CerSmall")?CerBig=${SelCerBig.value}`);
+                const datas = await response.json()
+                const CerSmall = datas.map(CertificateName => `<option value='${CertificateName}'>${CertificateName}</option>`);
+                SelCerSmall.innerHTML = CerSmall.join("");
+            }
+
+            loadSelCerSmall();
+
+            SelCerBig.addEventListener('change', () => {
+                loadSelCerSmall();
+            });
+
+
+
+
+
+
+
+
+
+            // //const btn = document.querySelector('#button1');
+            // ////const theA = document.querySelector('#a1')
+            // ////const theDiv2 = document.querySelector('#div2')
+            // ////const userName = document.querySelector('#userName')
+            // ////const theDiv = document.querySelector('#div1')
+
+            // //btn.addEventListener('click', event => {              
+
+            // //    const xhr = new XMLHttpRequest();
+            // //    xhr.open('Post', '~/Backstage/Form');   //改成用ApiController裡面的Register方法，直接新增至DB
+            // //    //xhr.open('POST', '@Url.Content("~/Backstage/Form")')
+
+            // //    xhr.addEventListener('load', () => {
+            // //        const data = xhr.responseText;
+            // //        theDiv.innerHTML = data;
+            // //    })
+
+            // //    //改用 fetch 傳送FormData到server端
+            // //    const formData = new FormData(document.querySelector('#form'));
+            // //    fetch('@Url.Content("~/Backstage/Form")', {
+            // //        body: formData,
+            // //        method: 'POST'
+            // //    })
+            // //        .then(response => {
+            // //            if (response.ok) {
+            // //                alert("新增成功")
+            // //                location.href = '@Url.Content("~/Backstage/TablesEditable")'    //新增完後跳轉到TablesEditable畫面
+            // //            } else {
+            // //                alert("有錯誤!!")
+            // //            }
+            // //        })
+            // //    })
+
+
+
+            // //test
+            // //步驟一，建立ajax物件
+            // var xhr = new XMLHttpRequest();
+
+            // //步驟二，對伺服器發出要求
+            // //api是controller，GetDemo是方法名
+            // //網址要輸入Home/Ajax，因是在HomeController/View/Home下面Ajax.cshtml，因是在Ajax送出請求，要傳回自己的頁面
+            // //xhr.open('GET', '/api/GetDemo')
+
+            // // xhr.open('GET', '/api/getdemo?name=Mary&age=28')
+
+            // //改用Url.Content產生路徑↓
+            // //若指定值↓
+            // const name = "Jack";
+            // const age = 25;
+            // //xhr.open('GET', '@Url.Content("~/Backstage/Form")?name=Mary&age=28')
+            // xhr.open('GET', `@Url.Content("~/Backstage/Form")?TaskTitle=${TaskTitle}&TaskDetail=${TaskDetail}`)
+
+
+
+            // xhr.send();
+
+            // //步驟三，接收伺服器回傳的結果(用load事件接收)
+            // xhr.addEventListener('load', function () {
+            //     var data = xhr.responseText;
+
+            //     //步驟四，讀出回傳的結果
+            //     //步驟五，把讀出的結果顯示在網頁上
+            //     document.querySelector('#div1').innerHTML = `<h3>${data}</h3>`
+
+            // })
 
 
 

@@ -22,49 +22,32 @@ namespace WantTask.Controllers
             _host = host;
         }
 
+        public IActionResult PartialPublish(string category)
+        {
+            var taskName = _context.TaskLists.
+                Where(t => t.TaskName.TaskName == category && t.PublishOrNot == "立刻上架");
+            //var cities = _context.Address.Select(c => new
+            //{
+            //    c.City
+            //}).Distinct();
+            return PartialView(taskName);
+        }
+
+        //選擇任務類別+未上架
+        public IActionResult PartialNoPublish(string category)
+        {
+            var taskName = _context.TaskLists.
+                Where(t => t.TaskName.TaskName == category && t.PublishOrNot == "延後上架");
+            //var cities = _context.Address.Select(c => new
+            //{
+            //    c.City
+            //}).Distinct();
+            return PartialView(taskName);
+        }
+
 
         public IActionResult Approve()
         {
-
-            //var q = from app in _context.ApplicationLists.AsEnumerable()
-
-            //        join task in _context.TaskLists on app.CaseId equals task.CaseId
-            //        // join app in dbWantModel.ApplicationLists on task.CaseStatusID equals app.CaseStatusID
-
-            //        //join taskname in dbWantModel.TaskNameLists on task.TaskNameID equals taskname.TaskNameID
-
-            //        join resume in _context.Resumes on task.TaskNameId equals resume.TaskNameId
-
-            //        join resumeskill in _context.ResumeSkills on resume.ResumeId equals resumeskill.ResumeId
-            //        join skill in _context.Skills on resumeskill.SkillId equals skill.SkillId
-
-            //        join resumecer in _context.ResumeCertificates on resume.ResumeId equals resumecer.ResumeId
-            //        join cer in _context.Certificates on resumecer.CertificateId equals cer.CertificateId
-
-            //        join member in _context.MemberAccounts on resume.AccountId equals member.AccountId
-
-            //        //where task.TaskNameList.TaskName== cmb_TaskNumberID.Text
-
-            //        where app.CaseStatusId == 21
-
-            //        select new CApproveViewModel
-            //        {
-            //            CaseId = task.CaseId,
-            //            ResumeId = resume.ResumeId,
-            //            TaskNameId = task.TaskNameId,
-            //            CaseStatusId = app.CaseStatusId,
-            //            Name = member.Name,
-            //            SkillName = skill.SkillName,
-            //            CertificateName = cer.CertificateName,
-            //            Autobiography = resume.Autobiography,
-            //            PublishStart = task.PublishStart,
-            //            TaskStart = task.TaskStart,
-            //            TaskTitle = task.TaskTitle,
-            //            TaskDetail = task.TaskDetail
-            //        };
-
-            //return View(q.ToList());
-            
                  var query =( from app in _context.ApplicationLists
                              join task in _context.TaskLists on app.CaseId equals task.CaseId
                              join resume in _context.Resumes on app.ResumeId equals resume.ResumeId
@@ -91,37 +74,11 @@ namespace WantTask.Controllers
                                  TaskTitle = task.TaskTitle,
                                  TaskDetail = task.TaskDetail
                              }).Distinct();
-
-
-            //var query = from app in _context.ApplicationLists
-            //            join task in _context.TaskLists on app.CaseId equals task.CaseId
-            //            join resume in _context.Resumes on task.TaskNameId equals resume.TaskNameId
-            //            join resumeskill in _context.ResumeSkills on resume.ResumeId equals resumeskill.ResumeId
-            //            join skill in _context.Skills on resumeskill.SkillId equals skill.SkillId
-            //            join resumecer in _context.ResumeCertificates on resume.ResumeId equals resumecer.ResumeId
-            //            join cer in _context.Certificates on resumecer.CertificateId equals cer.CertificateId
-            //            join member in _context.MemberAccounts on resume.AccountId equals member.AccountId
-            //            where app.CaseStatusId == 21
-            //            select new CApproveViewModel
-            //            {
-            //                CaseId = task.CaseId,
-            //                ResumeId = resume.ResumeId,
-            //                TaskNameId = task.TaskNameId,
-            //                CaseStatusId = app.CaseStatusId,
-            //                Name = member.Name,
-            //                SkillName = skill.SkillName,
-            //                CertificateName = cer.CertificateName,
-            //                Autobiography = resume.Autobiography,
-            //                PublishStart = task.PublishStart,
-            //                TaskStart = task.TaskStart,
-            //                TaskTitle = task.TaskTitle,
-            //                TaskDetail = task.TaskDetail
-            //            };
+          
 
             var viewModelList = query.ToList();
 
             return View(viewModelList);
-
 
         }
 
@@ -191,7 +148,7 @@ namespace WantTask.Controllers
             return View(q);
         }
 
-     
+
 
         //public IActionResult yes()
         //{
@@ -202,48 +159,54 @@ namespace WantTask.Controllers
         //            select app;
         //}
 
-        public IActionResult JobdetailBackstage(int? id)     //修改
-        {
-            if (id == null)
-            {
-                return RedirectToAction("JobdetailBackstage");
-            }
-
-            TaskList task = _context.TaskLists.FirstOrDefault(p => p.CaseId == id);
-            if (task == null)
-            {
-                return RedirectToAction("JobdetailBackstage");
-            }
-            CTaskWrap taskWrap = new CTaskWrap();  //因要改成用class:CProductWrap，所以增加這兩行
-            taskWrap.task = task;
-            return View(taskWrap);   //原本括號內是prod
+        public IActionResult JobdetailBackstage()
+        { 
+            return View(JobdetailBackstage);   
         }
 
-        [HttpPost]
 
-        public IActionResult JobdetailBackstage(CTaskWrap pln)     //修改，原本括號內是用TProduct pln，改成用class:CProductWrap，因CProduct是自動產生，會產生多次，用Wrap就不會被影響
-        {
+        //public IActionResult JobdetailBackstage(int? id)     //修改
+        //{
+        //    if (id == null)
+        //    {
+        //        return RedirectToAction("JobdetailBackstage");
+        //    }
 
-            TaskList pDb = _context.TaskLists.FirstOrDefault(p => p.CaseId == pln.FId);
+        //    TaskList task = _context.TaskLists.FirstOrDefault(p => p.CaseId == id);
+        //    if (task == null)
+        //    {
+        //        return RedirectToAction("JobdetailBackstage");
+        //    }
+        //    CTaskWrap taskWrap = new CTaskWrap();  //因要改成用class:CProductWrap，所以增加這兩行
+        //    taskWrap.task = task;
+        //    return View(taskWrap);   //原本括號內是prod
+        //}
 
-            if (pDb != null)
-            {
-                //if (pln.photo != null)
-                //{
-                //    string photoName = Guid.NewGuid().ToString() + ".jpg";
-                //    pDb.FImagePath = photoName;
-                //    pln.photo.CopyTo(new FileStream(_enviro.WebRootPath + "/Images/" + photoName, FileMode.Create));
-                //    //原本加照片的方法改成copyto，filestream裡面有兩個參數，1.路徑+存到哪個資料夾+給檔名，2.如果沒有照片就create
+        //[HttpPost]
 
-                //}
-                pDb.TaskTitle = pln.FTitle;
-                pDb.TaskDetail = pln.FDetail;
-                pDb.PayFrom = pln.FPayFrom;
-                //pDb.FPrice = pln.FPrice;
-                _context.SaveChanges();
-            }
-            return RedirectToAction("JobdetailBackstage");
-        }
+        //public IActionResult JobdetailBackstage(CTaskWrap pln)     //修改，原本括號內是用TProduct pln，改成用class:CProductWrap，因CProduct是自動產生，會產生多次，用Wrap就不會被影響
+        //{
+
+        //    TaskList pDb = _context.TaskLists.FirstOrDefault(p => p.CaseId == pln.FId);
+
+        //    if (pDb != null)
+        //    {
+        //        //if (pln.photo != null)
+        //        //{
+        //        //    string photoName = Guid.NewGuid().ToString() + ".jpg";
+        //        //    pDb.FImagePath = photoName;
+        //        //    pln.photo.CopyTo(new FileStream(_enviro.WebRootPath + "/Images/" + photoName, FileMode.Create));
+        //        //    //原本加照片的方法改成copyto，filestream裡面有兩個參數，1.路徑+存到哪個資料夾+給檔名，2.如果沒有照片就create
+
+        //        //}
+        //        pDb.TaskTitle = pln.FTitle;
+        //        pDb.TaskDetail = pln.FDetail;
+        //        pDb.PayFrom = pln.FPayFrom;
+        //        //pDb.FPrice = pln.FPrice;
+        //        _context.SaveChanges();
+        //    }
+        //    return RedirectToAction("JobdetailBackstage");
+        //}
 
 
 
@@ -272,7 +235,99 @@ namespace WantTask.Controllers
 
         //}
 
+        //支薪方式
+        public IActionResult Payment()
+        {
+            var payment = _context.Payments.Select(c => c.Payment1).Distinct();
+            //var cities = _context.Address.Select(c => new
+            //{
+            //    c.City
+            //}).Distinct();
+            return Json(payment);
+        }
 
+
+        //支薪日
+        public IActionResult PaymentDate()
+        {
+            var paymentDate = _context.PaymentDates.Select(c => c.PaymentDate1).Distinct();
+            //var cities = _context.Address.Select(c => new
+            //{
+            //    c.City
+            //}).Distinct();
+            return Json(paymentDate);
+        }
+
+
+
+        public IActionResult Cities()
+        {
+            var cities = _context.Cities.Select(c => c.City1).Distinct();
+            //var cities = _context.Address.Select(c => new
+            //{
+            //    c.City
+            //}).Distinct();
+            return Json(cities);
+        }
+
+        //根據城市名稱，回傳城市的鄉鎮區JSON資料
+        public IActionResult Districts(string city)
+        {
+            var districts = _context.Cities
+                .Where(a => a.City1 == city)
+                .SelectMany(c => c.Towns)
+                .Select(c => c.Town1)
+                .Distinct();
+
+            return Json(districts);
+        }
+
+        //技能種類
+        public IActionResult SkillBig()
+        {
+            var skillBig = _context.SkillTypes.Select(c => c.SkillTypeName).Distinct();
+            //var cities = _context.Address.Select(c => new
+            //{
+            //    c.City
+            //}).Distinct();
+            return Json(skillBig);
+        }
+
+        //技能小項目
+        public IActionResult SkillSmall(string skillBig)
+        {
+            var skillSmall = _context.SkillTypes
+                .Where(a => a.SkillTypeName == skillBig)
+                .SelectMany(c => c.Skills)
+                .Select(c => c.SkillName)
+                .Distinct();
+
+            return Json(skillSmall);
+        }
+
+
+        //證照種類
+        public IActionResult CerBig()
+        {
+            var cerBig = _context.CertificateTypes.Select(c => c.CertificateTypeName).Distinct();
+            //var cities = _context.Address.Select(c => new
+            //{
+            //    c.City
+            //}).Distinct();
+            return Json(cerBig);
+        }
+
+        //證照小項目
+        public IActionResult CerSmall(string cerBig)
+        {
+            var cerSmall = _context.CertificateTypes
+                .Where(a => a.CertificateTypeName == cerBig)
+                .SelectMany(c => c.Certificates)
+                .Select(c => c.CertificateName)
+                .Distinct();
+
+            return Json(cerSmall);
+        }
 
     }
 }
