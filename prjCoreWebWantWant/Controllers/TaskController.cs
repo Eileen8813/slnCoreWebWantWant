@@ -109,5 +109,26 @@ namespace prjWantWant_yh_CoreMVC.Controllers
             // 返回 apply.cshtml 視圖
             return View("Apply");
         }
+
+
+        public IActionResult Partial(string Category)
+        {
+            NewIspanProjectContext db = new NewIspanProjectContext();
+            //var q = from t in db.TaskLists
+            //        where t.TaskName.TaskName == Category && t.PublishOrNot == "立刻上架"
+            //        select t;
+            if (Category == "請選擇任務類型")
+            {
+                var all = db.TaskLists.
+                    Include(t => t.Town.City).
+                    Where(t => t.PublishOrNot == "立刻上架");
+                return PartialView(all);
+            }
+
+            var q = db.TaskLists.
+                     Include(t => t.Town.City).
+                     Where(t => t.TaskName.TaskName == Category && t.PublishOrNot == "立刻上架");
+            return PartialView(q);
+        }
     }
 }

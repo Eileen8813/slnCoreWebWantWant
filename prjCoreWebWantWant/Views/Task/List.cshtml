@@ -20,21 +20,21 @@
 }
 
 @section Scripts{
-    @*<script>
-        const selectSort = document.querySelector('#selectSort')
-       
-        selectSort.addEventListener('change',() => {
-            const xhr = new XMLHttpRequest();
-            xhr.open('POST');
-            const formSort = new FormData(document.querySelector('#sort'))
-            xhr.send(formSort);
+    <script>
+        const selCategory = document.querySelector('#selectCategory');
 
-            xhr.addEventListener('load',() => {
-                const data = xhr.responseText
-                console.log(`${data}`)
+        selCategory.addEventListener('change', () => {
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', '@Url.Content("~/Task/Partial")');
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.send(`Category=${selCategory.value}`);
+            xhr.addEventListener('load', () => {
+                const Partial = document.querySelector('#Partial');
+                Partial.innerHTML = xhr.responseText;
             })
-        })      
-    </script>*@
+        })
+
+    </script>
 }
 <head>
     <style>
@@ -93,22 +93,20 @@
                             </div>
                             <!-- Select job items start -->
                             <div class="select-job-items2">
+                                @{
+                                    NewIspanProjectContext db = new NewIspanProjectContext();
+                                    var q = from tn in db.TaskNameLists
+                                            select tn.TaskName;
+                                }
+
                                 @using (Html.BeginForm())
                                 {
-                                    <select name="selectCategory">
-                                        <option value="all">所有類別</option>
-                                        <option value="1">跑腿</option>
-                                        <option value="2">照顧寵物</option>
-                                        <option value="3">寫評分享</option>
-                                        <option value="4">多媒體</option>
-                                        <option value="5">電腦</option>
-                                        <option value="6">文書處理</option>
-                                        <option value="7">居家服務</option>
-                                        <option value="8">活動支援</option>
-                                        <option value="9">家教陪讀</option>
-                                        <option value="10">專家</option>
-                                        <option value="11">課業</option>
-                                        <option value="12">其他</option>
+                                    <select id="selectCategory" name="selectCategory">
+                                        <option>請選擇任務類型</option>
+                                        @foreach (var item in q)
+                                        {
+                                            <option value="@item">@item</option>
+                                        }
                                     </select>
                                 }
                             </div>
@@ -254,7 +252,7 @@
                     <!-- Job Category Listing End -->
                 </div>
                 <!-- Right content -->
-                <div class="col-xl-9 col-lg-9 col-md-8">
+                <div class="col-xl-9 col-lg-9 col-md-8" id="Partial">
                     <!-- Featured_job_start -->
                     <section class="featured-job-area">
                         <div class="container">
