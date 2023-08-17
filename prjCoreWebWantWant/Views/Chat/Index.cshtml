@@ -1,16 +1,18 @@
 ﻿
 @{
     ViewData["Title"] = "Chat";
+    Layout = "~/Views/Member/LayoutForMem.cshtml";
+
 }
 
 <h1>聊天室</h1>
 <div class="container">
 
-<div class="row my-5" style="height:70vh">
-    <div class="col-md-3 list-group custom-list-group" id="userList" style="max-height: 100%; overflow-y: auto;">
+<div class="row my-5 border" style="height:69vh">
+        <div class="col-md-3 list-group custom-list-group card" id="userList" style="max-height: 66vh; overflow-y: auto;">
     </div>
     <div class="col-md-9 card justify-content-end align-items-center">
-        <div class="" id="chatDetail" style="width:100%;max-height: 66vh; overflow-y: auto;">請選擇聊天對象以開始對話</div>
+        <div class="" id="chatDetail" style="overflow-y: auto;">請選擇聊天對象以開始對話</div>
 
         <span class="input-group">
             <input type="text" placeholder="Input some words..." class="form-control" autocomplete="off" name="sendMessage" tabindex="101" value="">

@@ -197,8 +197,8 @@ namespace WantTask.Controllers
 
         public IActionResult ForumMS()
         {
-
-            return View();
+            var postlist = _db.ForumPosts.Include(p=>p.StatusNavigation).ToArray();
+            return View(postlist);
         }
 
     }
