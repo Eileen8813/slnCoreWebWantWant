@@ -89,8 +89,6 @@ public partial class NewIspanProjectContext : DbContext
 
     public virtual DbSet<Resume> Resumes { get; set; }
 
-    public virtual DbSet<ResumeApplication> ResumeApplications { get; set; }
-
     public virtual DbSet<ResumeCertificate> ResumeCertificates { get; set; }
 
     public virtual DbSet<ResumeKeywordList> ResumeKeywordLists { get; set; }
@@ -127,7 +125,7 @@ public partial class NewIspanProjectContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=124.219.117.33;Initial Catalog=NewIspanProject;User ID=msit150;Password=aaaa;Trust Server Certificate=True");
+        => optionsBuilder.UseSqlServer("Data Source=124.219.117.33;Initial Catalog=NewIspanProject;Persist Security Info=True;User ID=msit150;Password=aaaa;Multiple Active Result Sets=True;Trust Server Certificate=True;Application Name=EntityFramework");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -795,6 +793,7 @@ public partial class NewIspanProjectContext : DbContext
             entity.Property(e => e.AccountId).HasColumnName("AccountID");
             entity.Property(e => e.Address).HasMaxLength(50);
             entity.Property(e => e.Autobiography).HasMaxLength(400);
+            entity.Property(e => e.CaseStatusId).HasColumnName("CaseStatusID");
             entity.Property(e => e.TaskNameId).HasColumnName("TaskNameID");
             entity.Property(e => e.TownId).HasColumnName("TownID");
             entity.Property(e => e.WorkingHoursId).HasColumnName("WorkingHoursID");
@@ -803,6 +802,10 @@ public partial class NewIspanProjectContext : DbContext
                 .HasForeignKey(d => d.AccountId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Resume_MemberAccount");
+
+            entity.HasOne(d => d.CaseStatus).WithMany(p => p.Resumes)
+                .HasForeignKey(d => d.CaseStatusId)
+                .HasConstraintName("FK_Resume_CaseStatusList");
 
             entity.HasOne(d => d.TaskName).WithMany(p => p.Resumes)
                 .HasForeignKey(d => d.TaskNameId)
@@ -815,20 +818,6 @@ public partial class NewIspanProjectContext : DbContext
             entity.HasOne(d => d.WorkingHours).WithMany(p => p.Resumes)
                 .HasForeignKey(d => d.WorkingHoursId)
                 .HasConstraintName("FK_Resume_WorkingTime");
-        });
-
-        modelBuilder.Entity<ResumeApplication>(entity =>
-        {
-            entity.ToTable("ResumeApplication");
-
-            entity.Property(e => e.ResumeApplicationId).HasColumnName("ResumeApplicationID");
-            entity.Property(e => e.CaseId).HasColumnName("CaseID");
-            entity.Property(e => e.CaseStatusId).HasColumnName("CaseStatusID");
-            entity.Property(e => e.ResumeId).HasColumnName("ResumeID");
-
-            entity.HasOne(d => d.Resume).WithMany(p => p.ResumeApplications)
-                .HasForeignKey(d => d.ResumeId)
-                .HasConstraintName("FK_ResumeApplication_Resume");
         });
 
         modelBuilder.Entity<ResumeCertificate>(entity =>
@@ -1032,6 +1021,10 @@ public partial class NewIspanProjectContext : DbContext
             entity.HasOne(d => d.Salary).WithMany(p => p.TaskLists)
                 .HasForeignKey(d => d.SalaryId)
                 .HasConstraintName("FK_TaskList_Salary");
+
+            entity.HasOne(d => d.TaskName).WithMany(p => p.TaskLists)
+                .HasForeignKey(d => d.TaskNameId)
+                .HasConstraintName("FK_TaskList_TaskNameList");
 
             entity.HasOne(d => d.Town).WithMany(p => p.TaskLists)
                 .HasForeignKey(d => d.TownId)

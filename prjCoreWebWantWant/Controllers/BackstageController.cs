@@ -4,6 +4,10 @@ namespace prjWantWant_yh_CoreMVC.Controllers
 {
     public class BackstageController : Controller
     {
+        public IActionResult ResumeUneditable()
+        {
+            return View();
+        }
 
         public IActionResult ResumeList()
         {

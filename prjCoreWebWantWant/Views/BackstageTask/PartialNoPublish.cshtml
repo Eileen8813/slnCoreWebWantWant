@@ -11,7 +11,7 @@
                 <th style="width: 300px;">任務內容</th>
                 <th style="width: 100px;">任務日期</th>
                 @* <th>更改狀態</th>*@
-                <th style="width: 50px;">修改</th>
+                <th style="width: 50px;">查看</th>
             </tr>
         </thead>
         <tbody>
@@ -44,7 +44,7 @@
                         <td data-field="gender">@Html.DisplayFor(modelItem => item.TaskStartDate)</td>
                         @*<td data-field="gender">@Html.DisplayFor(modelItem => item.PublishOrNot)</td>*@
                         <td style="width: 100px">
-                            <a class="btn btn-outline-secondary btn-sm edit" title="Edit">
+                            <a class="btn btn-outline-secondary btn-sm edit" title="Edit" href="@Url.Content("~/backstagetask/JobdetailBackstage")">
                                 <i class="fas fa-pencil-alt"></i>
                             </a>
                         </td>

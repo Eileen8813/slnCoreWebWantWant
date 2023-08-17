@@ -25,17 +25,19 @@ public partial class Resume
 
     public bool IsExpertOrNot { get; set; }
 
+    public int? CaseStatusId { get; set; }
+
     public virtual MemberAccount Account { get; set; } = null!;
 
     public virtual ICollection<ApplicationList> ApplicationLists { get; set; } = new List<ApplicationList>();
+
+    public virtual CaseStatusList? CaseStatus { get; set; }
 
     public virtual ExpertResume? ExpertResume { get; set; }
 
     public virtual ICollection<MemberCollection> MemberCollections { get; set; } = new List<MemberCollection>();
 
     public virtual ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
-
-    public virtual ICollection<ResumeApplication> ResumeApplications { get; set; } = new List<ResumeApplication>();
 
     public virtual ICollection<ResumeCertificate> ResumeCertificates { get; set; } = new List<ResumeCertificate>();
 

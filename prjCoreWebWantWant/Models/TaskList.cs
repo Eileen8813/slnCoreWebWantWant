@@ -95,6 +95,8 @@ public partial class TaskList
 
     public virtual ICollection<TaskKeywordList> TaskKeywordLists { get; set; } = new List<TaskKeywordList>();
 
+    public virtual TaskNameList? TaskName { get; set; }
+
     public virtual ICollection<TaskPhoto> TaskPhotos { get; set; } = new List<TaskPhoto>();
 
     public virtual ICollection<TaskSkill> TaskSkills { get; set; } = new List<TaskSkill>();
