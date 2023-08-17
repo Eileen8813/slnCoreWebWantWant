@@ -14,9 +14,9 @@
 
 <h2>會員基本資料</h2>
 
-<p>
+@* <p>
     @Html.ActionLink("Create New", "Create")
-</p>
+</p> *@
 
 <table class="table table-hover">
     <tr>
@@ -87,9 +87,9 @@
     </tr>
     <tr>
         <td colspan="2">
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("編輯", "EditMemberInfo", new { /* id=item.PrimaryKey */ }) @* |
             @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }) *@
         </td>
     </tr>
 </table>
