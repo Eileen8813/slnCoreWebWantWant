@@ -33,6 +33,7 @@
     </div>
 </section>
 <!-- main-title end -->
+
 <!-- search start -->
 <section class="search-section py-3">
     <div class="container-fluid bg-primary mb-5 wow fadeIn" data-wow-delay="0.1s" style="padding: 35px;">
@@ -62,13 +63,14 @@
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <a>@Html.ActionLink("搜尋", "Index", "Home", new { area = "" }, new { @class = "btn btn-dark border-0 w-100" })</a>
+                    <a class="btn btn-dark border-0 w-100" asp-area="" asp-controller="Task" asp-action="List">搜尋</a>
                 </div>
             </div>
         </div>
     </div>
 </section>
 <!-- search end -->
+
 <!-- job-listing start  -->
 @* @foreach (var item in Model)
 { *@
@@ -268,6 +270,7 @@
     <!-- job_listing_area_end  -->
 </section>
 <!-- job-listing end  -->
+
 <!-- expert start -->
 <section class="expert-section py-3">
     <div class="container" data-aos="fade-down">
@@ -413,6 +416,7 @@
     </div>
 </section>
 <!-- expert end -->
+
 <!-- job-searcing-wrap start  -->
 <section class="searcing-wrap-section py-3">
     <div class="job_searcing_wrap overlay">
@@ -422,14 +426,14 @@
                     <div class="searching_text">
                         <h3 class="searching_text">Looking for a Job?</h3>
                         <p>發現你的自由之旅，打造多元職涯。</p>
-                        <a>@Html.ActionLink("找工作", "Index", "Home", new { area = "" }, new { @class = "boxed-btn3" })</a>
+                        <a class="boxed-btn3" asp-area="" asp-controller="Task" asp-action="List">找工作</a>
                     </div>
                 </div>
                 <div class="col-lg-5 offset-lg-1 col-md-6">
                     <div class="searching_text">
                         <h3 class="searching_text">Looking for a Expert?</h3>
                         <p>尋找專家，一同創造未來，無論何時何地。</p>
-                        <a>@Html.ActionLink("找專家", "Index", "Home", new { area = "" }, new { @class = "boxed-btn3" })</a>
+                        <a class="boxed-btn3" asp-area="" asp-controller="Expert" asp-action="ExpertMainPage">找專家</a>
                     </div>
                 </div>
             </div>
@@ -437,6 +441,7 @@
     </div>
 </section>
 <!-- job-searcing-wrap end  -->
+
 <!-- customer start -->
 <section class="customer-section py-3">
     <div class="container">
@@ -485,6 +490,7 @@
     </div>
 </section>
 <!-- customer end -->
+
 @*<!-- Section -->
 <section class="-section py-3 mb-4">
     <div class="container">
